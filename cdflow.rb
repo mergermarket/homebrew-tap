@@ -10,6 +10,7 @@ class Cdflow < Formula
   # Resources generated with:
   #   pip3 install some_package homebrew-pypi-poet:
   #   poet docker --also boto3 --also PyYAML --also dockerpty | pbcopy
+  #   (this will be simpler when it's in pypi since it will just be "poet cdflow")
   resource "boto3" do
     url "https://files.pythonhosted.org/packages/99/3d/37ff2862fdfc085c91e4b01def55860449cdefd4845a267e46d3340c761b/boto3-1.9.134.tar.gz"
     sha256 "9c789a775f0499743b083ffd63e0e87dae9a727511bb37f2529da52ccd25a360"
@@ -96,6 +97,14 @@ class Cdflow < Formula
   end
 
   def install
-	virtualenv_install_with_resources(:using => "python3")
+    # it will be simpler when cdflow is in pypi:
+	# virtualenv_install_with_resources(:using => "python3")
+
+    venv = virtualenv_create(libexec, "python3")
+    venv.pip_install resources
+    contents = File.read("cdflow.py").gsub(/env python$/, "env python3")
+    File.open("cdflow", "w") {|file| file.puts contents }
+    File.chmod(0755, "cdflow") 
+    bin.install "cdflow"
   end
 end

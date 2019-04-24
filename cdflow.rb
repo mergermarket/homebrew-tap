@@ -5,6 +5,7 @@ class Cdflow < Formula
   homepage "https://mergermarket.github.io/cdflow"
   url "https://github.com/mergermarket/cdflow/archive/48.tar.gz"
   sha256 "6884c89fd245ff8b5085f0298fb65d2fda460e6cf5347903de29ed2dce1cdd6d"
+  depends_on "python"
 
   # Resources generated with:
   #   pip3 install some_package homebrew-pypi-poet:
@@ -95,6 +96,6 @@ class Cdflow < Formula
   end
 
   def install
-	virtualenv_install_with_resources
+	virtualenv_install_with_resources(:using => "python3")
   end
 end

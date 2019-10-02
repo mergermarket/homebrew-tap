@@ -8,7 +8,7 @@ class Cdflow < Formula
   depends_on "python"
 
   # Resources generated with:
-  #   pip3 install some_package homebrew-pypi-poet:
+  #   pip3 install homebrew-pypi-poet
   #   poet cdflow | pbcopy
 
   resource "boto3" do

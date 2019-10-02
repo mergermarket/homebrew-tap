@@ -3,14 +3,14 @@ class Cdflow < Formula
   
   desc "Deployment tooling for continuous delivery"
   homepage "https://mergermarket.github.io/cdflow"
-  url "https://github.com/mergermarket/cdflow/archive/48.tar.gz"
-  sha256 "6884c89fd245ff8b5085f0298fb65d2fda460e6cf5347903de29ed2dce1cdd6d"
+  url "https://files.pythonhosted.org/packages/d0/18/7ce7d5f4d2951027caecc5a4fd69c33872b058d070558194f12e89003c27/cdflow-118.tar.gz"
+  sha256 "24a061501b3affb65efdf4dd127515b96c81811ad80759ddef41a2e84edfba2b"
   depends_on "python"
 
   # Resources generated with:
   #   pip3 install some_package homebrew-pypi-poet:
-  #   poet docker --also boto3 --also PyYAML --also dockerpty | pbcopy
-  #   (this will be simpler when it's in pypi since it will just be "poet cdflow")
+  #   poet cdflow | pbcopy
+
   resource "boto3" do
     url "https://files.pythonhosted.org/packages/99/3d/37ff2862fdfc085c91e4b01def55860449cdefd4845a267e46d3340c761b/boto3-1.9.134.tar.gz"
     sha256 "9c789a775f0499743b083ffd63e0e87dae9a727511bb37f2529da52ccd25a360"
@@ -19,6 +19,11 @@ class Cdflow < Formula
   resource "botocore" do
     url "https://files.pythonhosted.org/packages/cc/ba/79a7e98d300d5d63ee83360aba534d0967cb3426440f027792573fb92a5b/botocore-1.12.134.tar.gz"
     sha256 "5c4d9ea1b0fbb1dc98b6a06ed8780096fca981a1c3599bf8f03f338e6aa389ae"
+  end
+
+  resource "cdflow" do
+    url "https://files.pythonhosted.org/packages/d0/18/7ce7d5f4d2951027caecc5a4fd69c33872b058d070558194f12e89003c27/cdflow-118.tar.gz"
+    sha256 "24a061501b3affb65efdf4dd127515b96c81811ad80759ddef41a2e84edfba2b"
   end
 
   resource "certifi" do
@@ -97,14 +102,6 @@ class Cdflow < Formula
   end
 
   def install
-    # it will be simpler when cdflow is in pypi:
-	# virtualenv_install_with_resources(:using => "python3")
-
-    venv = virtualenv_create(libexec, "python3")
-    venv.pip_install resources
-    contents = File.read("cdflow.py").gsub(/env python$/, "env python3")
-    File.open("cdflow", "w") {|file| file.puts contents }
-    File.chmod(0755, "cdflow") 
-    bin.install "cdflow"
+	virtualenv_install_with_resources(:using => "python3")
   end
 end

@@ -3,8 +3,8 @@ class Cdflow < Formula
   
   desc "Deployment tooling for continuous delivery"
   homepage "https://mergermarket.github.io/cdflow"
-  url "https://files.pythonhosted.org/packages/d0/18/7ce7d5f4d2951027caecc5a4fd69c33872b058d070558194f12e89003c27/cdflow-118.tar.gz"
-  sha256 "24a061501b3affb65efdf4dd127515b96c81811ad80759ddef41a2e84edfba2b"
+  url "https://files.pythonhosted.org/packages/9a/09/e8a86a049e3b8e39e7a5f1855fc265fc5897e3049564f39e83fc1f14a5e4/cdflow-119.tar.gz"
+  sha256 "d0c778a7da2b579ef07063f79ccfdcddf88a8cee6c9d664e58666640a14df570"
   depends_on "python"
 
   # Resources generated with:
@@ -22,8 +22,8 @@ class Cdflow < Formula
   end
 
   resource "cdflow" do
-    url "https://files.pythonhosted.org/packages/d0/18/7ce7d5f4d2951027caecc5a4fd69c33872b058d070558194f12e89003c27/cdflow-118.tar.gz"
-    sha256 "24a061501b3affb65efdf4dd127515b96c81811ad80759ddef41a2e84edfba2b"
+    url "https://files.pythonhosted.org/packages/9a/09/e8a86a049e3b8e39e7a5f1855fc265fc5897e3049564f39e83fc1f14a5e4/cdflow-119.tar.gz"
+    sha256 "d0c778a7da2b579ef07063f79ccfdcddf88a8cee6c9d664e58666640a14df570"
   end
 
   resource "certifi" do

@@ -1,9 +1,9 @@
 class Cdflow2 < Formula
   desc     "Deployment tooling for continuous delivery"
   homepage "https://github.com/mergermarket/cdflow2"
-  version  "v0.52.1"
-  url      "https://github.com/mergermarket/cdflow2/releases/download/v0.52.1/cdflow2-darwin-amd64"
-  sha256   "ab73239baa97db09bd5d6610345bfef9c59d68f1054fcd972e0da4ed6db2e63f"
+  version  "v0.53.0"
+  url      "https://github.com/mergermarket/cdflow2/releases/download/v0.53.0/cdflow2-darwin-amd64"
+  sha256   "f9155af52b4e7a39c9cfe97044dd9e04e2be68c74ef28a59f2ed22e7429d2115"
   
   def install
     bin.install "cdflow2-darwin-amd64"
